@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desserts - Coffee&Co.</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: url("assets/bg.jpg") fixed repeat;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 40px 20px;
+      }
+
+      .dessert-container {
+        max-width: 600px;
+        width: 100%;
+      }
+
+      .dessert-image {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+      }
+
+      .back-btn {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        background: rgba(192, 129, 61, 0.9);
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        transition:
+          background 0.3s ease,
+          transform 0.2s ease;
+      }
+
+      .back-btn:hover {
+        background: rgba(192, 129, 61, 1);
+        transform: translateY(-2px);
+      }
+
+      .pagination-dots {
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .dot.active {
+        background: rgba(192, 129, 61, 1);
+      }
+    </style>
+  </head>
+  <body>
+    <button class="back-btn" onclick="window.location.href = 'index.html'">
+      ← Back
+    </button>
+
+    <div class="dessert-container">
+      <img
+        src="assets/categories/desserts2.jpg"
+        alt="Dessert"
+        class="dessert-image"
+      />
+    </div>
+
+    <div class="pagination-dots">
+      <div class="dot"></div>
+      <div class="dot active"></div>
+    </div>
+
+    <script>
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      document.addEventListener("touchstart", (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      });
+
+      document.addEventListener("touchend", (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      });
+
+      function handleSwipe() {
+        if (touchEndX - touchStartX > 50) {
+          window.location.href = "desserts1.html";
+        }
+      }
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") {
+          window.location.href = "desserts1.html";
+        }
+      });
+    </script>
+  </body>
+</html>
